@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32ca12a9097e4cdbbd681da9ffe29592" Name="Diagram1">
+        <EntityTypeShape EntityType="DBNatilleraModel.Abono" Width="1.5" PointX="14.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Actividade" Width="1.5" PointX="12" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Ahorro" Width="1.5" PointX="12" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Barrio" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Ciudad" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Departamento" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Multa" Width="1.5" PointX="15" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Pai" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Prestamo" Width="1.5" PointX="12" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Telefono" Width="1.5" PointX="15" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.TipoActividad" Width="1.5" PointX="9.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.TipoDocumento" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.TipoMulta" Width="1.5" PointX="12.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.TipoTel" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.TipoUsuario" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNatilleraModel.Usuario" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Abonos_Prestamos" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Abonos_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Actividades_TipoActividad" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Actividades_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Ahorros_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Barrio_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Usuarios_Barrio" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Ciudad_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Departamento_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Multas_TipoMulta" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Multas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Prestamos_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Telefono_TipoTel" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Telefono_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Usuarios_TipoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Fk_Usuarios_TipoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNatilleraModel.Actividad_Usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

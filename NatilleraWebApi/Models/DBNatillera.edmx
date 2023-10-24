@@ -1,0 +1,1127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBNatilleraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abonos">
+          <Key>
+            <PropertyRef Name="AbonoId" />
+          </Key>
+          <Property Name="AbonoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="PrestamoId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBNatillera.dbo.Actividad_Usuarios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Actividad_Usuarios">
+          <Key>
+            <PropertyRef Name="ActividadId" />
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="ActividadId" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="ActividadId" />
+          </Key>
+          <Property Name="ActividadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Costo" Type="money" Nullable="false" />
+          <Property Name="Ganancia" Type="money" Nullable="false" />
+          <Property Name="Encargado" Type="int" Nullable="false" />
+          <Property Name="TipoActividadId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ahorros">
+          <Key>
+            <PropertyRef Name="AhorroId" />
+          </Key>
+          <Property Name="AhorroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ahorro" Type="money" Nullable="false" />
+          <Property Name="FechaPago" Type="date" Nullable="false" />
+          <Property Name="FechaEstimada" Type="date" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="BarrioId" />
+          </Key>
+          <Property Name="BarrioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CiudadId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="CiudadId" />
+          </Key>
+          <Property Name="CiudadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartamentoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="DepartamentoId" />
+          </Key>
+          <Property Name="DepartamentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaisId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Multas">
+          <Key>
+            <PropertyRef Name="MultaId" />
+          </Key>
+          <Property Name="MultaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="TipoMultaId" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="PaisId" />
+          </Key>
+          <Property Name="PaisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="PrestamoId" />
+          </Key>
+          <Property Name="PrestamoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="Cuotas" Type="int" Nullable="false" />
+          <Property Name="Interes" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Telefono">
+          <Key>
+            <PropertyRef Name="TelefonoId" />
+          </Key>
+          <Property Name="TelefonoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="20" />
+          <Property Name="TipoTelId" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoActividad">
+          <Key>
+            <PropertyRef Name="TipoActividadId" />
+          </Key>
+          <Property Name="TipoActividadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="TipoDocumentoId" />
+          </Key>
+          <Property Name="TipoDocumentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMulta">
+          <Key>
+            <PropertyRef Name="TipoMultaId" />
+          </Key>
+          <Property Name="TipoMultaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoTel">
+          <Key>
+            <PropertyRef Name="TipoTelId" />
+          </Key>
+          <Property Name="TipoTelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Decripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoUsuarioId" />
+          </Key>
+          <Property Name="TipoUsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="int" Nullable="false" />
+          <Property Name="TipoUsuarioId" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="BarrioId" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_Abonos_Prestamos">
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="1" />
+          <End Role="Abonos" Type="Self.Abonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamos">
+              <PropertyRef Name="PrestamoId" />
+            </Principal>
+            <Dependent Role="Abonos">
+              <PropertyRef Name="PrestamoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Abonos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Abonos" Type="Self.Abonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Abonos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividad_Usuarios_Actividades">
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
+          <End Role="Actividad_Usuarios" Type="Self.Actividad_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividades">
+              <PropertyRef Name="ActividadId" />
+            </Principal>
+            <Dependent Role="Actividad_Usuarios">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividad_Usuarios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Actividad_Usuarios" Type="Self.Actividad_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividad_Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividades_TipoActividad">
+          <End Role="TipoActividad" Type="Self.TipoActividad" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="TipoActividadId" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="TipoActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividades_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="Encargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Ahorros_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Ahorros" Type="Self.Ahorros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Ahorros">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Barrio_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CiudadId" />
+            </Principal>
+            <Dependent Role="Barrio">
+              <PropertyRef Name="CiudadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="DepartamentoId" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="DepartamentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="PaisId" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="PaisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Multas_TipoMulta">
+          <End Role="TipoMulta" Type="Self.TipoMulta" Multiplicity="1" />
+          <End Role="Multas" Type="Self.Multas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMulta">
+              <PropertyRef Name="TipoMultaId" />
+            </Principal>
+            <Dependent Role="Multas">
+              <PropertyRef Name="TipoMultaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Multas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Multas" Type="Self.Multas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Multas">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Prestamos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Telefono_TipoTel">
+          <End Role="TipoTel" Type="Self.TipoTel" Multiplicity="1" />
+          <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTel">
+              <PropertyRef Name="TipoTelId" />
+            </Principal>
+            <Dependent Role="Telefono">
+              <PropertyRef Name="TipoTelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Telefono_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Telefono">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Barrio">
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrio">
+              <PropertyRef Name="BarrioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="BarrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBNatilleraModelStoreContainer">
+          <EntitySet Name="Abonos" EntityType="Self.Abonos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ahorros" EntityType="Self.Ahorros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Barrio" EntityType="Self.Barrio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telefono" EntityType="Self.Telefono" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoActividad" EntityType="Self.TipoActividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDocumento" EntityType="Self.TipoDocumento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMulta" EntityType="Self.TipoMulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTel" EntityType="Self.TipoTel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Actividad_Usuarios" EntityType="Self.Actividad_Usuarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Actividad_Usuarios].[ActividadId] AS [ActividadId], 
+    [Actividad_Usuarios].[UsuarioId] AS [UsuarioId]
+    FROM [dbo].[Actividad_Usuarios] AS [Actividad_Usuarios]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Fk_Abonos_Prestamos" Association="Self.Fk_Abonos_Prestamos">
+            <End Role="Prestamos" EntitySet="Prestamos" />
+            <End Role="Abonos" EntitySet="Abonos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Abonos_Usuarios" Association="Self.Fk_Abonos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Abonos" EntitySet="Abonos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividad_Usuarios_Actividades" Association="Self.Fk_Actividad_Usuarios_Actividades">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="Actividad_Usuarios" EntitySet="Actividad_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividad_Usuarios_Usuarios" Association="Self.Fk_Actividad_Usuarios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Actividad_Usuarios" EntitySet="Actividad_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividades_TipoActividad" Association="Self.Fk_Actividades_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividad" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividades_Usuarios" Association="Self.Fk_Actividades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Ahorros_Usuarios" Association="Self.Fk_Ahorros_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Ahorros" EntitySet="Ahorros" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Barrio_Ciudad" Association="Self.Fk_Barrio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Barrio" EntitySet="Barrio" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Ciudad_Departamento" Association="Self.Fk_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Departamento_Pais" Association="Self.Fk_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Multas_TipoMulta" Association="Self.Fk_Multas_TipoMulta">
+            <End Role="TipoMulta" EntitySet="TipoMulta" />
+            <End Role="Multas" EntitySet="Multas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Multas_Usuarios" Association="Self.Fk_Multas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Multas" EntitySet="Multas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Prestamos_Usuarios" Association="Self.Fk_Prestamos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Telefono_TipoTel" Association="Self.Fk_Telefono_TipoTel">
+            <End Role="TipoTel" EntitySet="TipoTel" />
+            <End Role="Telefono" EntitySet="Telefono" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Telefono_Usuarios" Association="Self.Fk_Telefono_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Telefono" EntitySet="Telefono" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Barrio" Association="Self.Fk_Usuarios_Barrio">
+            <End Role="Barrio" EntitySet="Barrio" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_TipoDocumento" Association="Self.Fk_Usuarios_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_TipoUsuario" Association="Self.Fk_Usuarios_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBNatilleraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Abono">
+          <Key>
+            <PropertyRef Name="AbonoId" />
+          </Key>
+          <Property Name="AbonoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="PrestamoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.Fk_Abonos_Prestamos" FromRole="Abonos" ToRole="Prestamos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Abonos_Usuarios" FromRole="Abonos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Actividade">
+          <Key>
+            <PropertyRef Name="ActividadId" />
+          </Key>
+          <Property Name="ActividadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Ganancia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Encargado" Type="Int32" Nullable="false" />
+          <Property Name="TipoActividadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoActividad" Relationship="Self.Fk_Actividades_TipoActividad" FromRole="Actividades" ToRole="TipoActividad" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Actividades_Usuarios" FromRole="Actividades" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.Actividad_Usuarios" FromRole="Actividades" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Ahorro">
+          <Key>
+            <PropertyRef Name="AhorroId" />
+          </Key>
+          <Property Name="AhorroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ahorro1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEstimada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Ahorros_Usuarios" FromRole="Ahorros" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="BarrioId" />
+          </Key>
+          <Property Name="BarrioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CiudadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.Fk_Barrio_Ciudad" FromRole="Barrio" ToRole="Ciudad" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.Fk_Usuarios_Barrio" FromRole="Barrio" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="CiudadId" />
+          </Key>
+          <Property Name="CiudadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartamentoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Barrios" Relationship="Self.Fk_Barrio_Ciudad" FromRole="Ciudad" ToRole="Barrio" />
+          <NavigationProperty Name="Departamento" Relationship="Self.Fk_Ciudad_Departamento" FromRole="Ciudad" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="DepartamentoId" />
+          </Key>
+          <Property Name="DepartamentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaisId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudads" Relationship="Self.Fk_Ciudad_Departamento" FromRole="Departamento" ToRole="Ciudad" />
+          <NavigationProperty Name="Pai" Relationship="Self.Fk_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Multa">
+          <Key>
+            <PropertyRef Name="MultaId" />
+          </Key>
+          <Property Name="MultaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TipoMultaId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoMulta" Relationship="Self.Fk_Multas_TipoMulta" FromRole="Multas" ToRole="TipoMulta" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Multas_Usuarios" FromRole="Multas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Pai">
+          <Key>
+            <PropertyRef Name="PaisId" />
+          </Key>
+          <Property Name="PaisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Departamentoes" Relationship="Self.Fk_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="PrestamoId" />
+          </Key>
+          <Property Name="PrestamoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Cuotas" Type="Int32" Nullable="false" />
+          <Property Name="Interes" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Abonos" Relationship="Self.Fk_Abonos_Prestamos" FromRole="Prestamos" ToRole="Abonos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Prestamos_Usuarios" FromRole="Prestamos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Telefono">
+          <Key>
+            <PropertyRef Name="TelefonoId" />
+          </Key>
+          <Property Name="TelefonoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TipoTelId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoTel" Relationship="Self.Fk_Telefono_TipoTel" FromRole="Telefono" ToRole="TipoTel" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Fk_Telefono_Usuarios" FromRole="Telefono" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="TipoActividad">
+          <Key>
+            <PropertyRef Name="TipoActividadId" />
+          </Key>
+          <Property Name="TipoActividadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Actividades" Relationship="Self.Fk_Actividades_TipoActividad" FromRole="TipoActividad" ToRole="Actividades" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="TipoDocumentoId" />
+          </Key>
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.Fk_Usuarios_TipoDocumento" FromRole="TipoDocumento" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="TipoMulta">
+          <Key>
+            <PropertyRef Name="TipoMultaId" />
+          </Key>
+          <Property Name="TipoMultaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Multas" Relationship="Self.Fk_Multas_TipoMulta" FromRole="TipoMulta" ToRole="Multas" />
+        </EntityType>
+        <EntityType Name="TipoTel">
+          <Key>
+            <PropertyRef Name="TipoTelId" />
+          </Key>
+          <Property Name="TipoTelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Decripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Telefonoes" Relationship="Self.Fk_Telefono_TipoTel" FromRole="TipoTel" ToRole="Telefono" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoUsuarioId" />
+          </Key>
+          <Property Name="TipoUsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.Fk_Usuarios_TipoUsuario" FromRole="TipoUsuario" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoUsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="BarrioId" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Abonos" Relationship="Self.Fk_Abonos_Usuarios" FromRole="Usuarios" ToRole="Abonos" />
+          <NavigationProperty Name="Actividades" Relationship="Self.Fk_Actividades_Usuarios" FromRole="Usuarios" ToRole="Actividades" />
+          <NavigationProperty Name="Ahorros" Relationship="Self.Fk_Ahorros_Usuarios" FromRole="Usuarios" ToRole="Ahorros" />
+          <NavigationProperty Name="Barrio" Relationship="Self.Fk_Usuarios_Barrio" FromRole="Usuarios" ToRole="Barrio" />
+          <NavigationProperty Name="Multas" Relationship="Self.Fk_Multas_Usuarios" FromRole="Usuarios" ToRole="Multas" />
+          <NavigationProperty Name="Prestamos" Relationship="Self.Fk_Prestamos_Usuarios" FromRole="Usuarios" ToRole="Prestamos" />
+          <NavigationProperty Name="Telefonoes" Relationship="Self.Fk_Telefono_Usuarios" FromRole="Usuarios" ToRole="Telefono" />
+          <NavigationProperty Name="TipoDocumento" Relationship="Self.Fk_Usuarios_TipoDocumento" FromRole="Usuarios" ToRole="TipoDocumento" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.Fk_Usuarios_TipoUsuario" FromRole="Usuarios" ToRole="TipoUsuario" />
+          <NavigationProperty Name="Actividades1" Relationship="Self.Actividad_Usuarios" FromRole="Usuarios" ToRole="Actividades" />
+        </EntityType>
+        <Association Name="Fk_Abonos_Prestamos">
+          <End Role="Prestamos" Type="Self.Prestamo" Multiplicity="1" />
+          <End Role="Abonos" Type="Self.Abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamos">
+              <PropertyRef Name="PrestamoId" />
+            </Principal>
+            <Dependent Role="Abonos">
+              <PropertyRef Name="PrestamoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Abonos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Abonos" Type="Self.Abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Abonos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividades_TipoActividad">
+          <End Role="TipoActividad" Type="Self.TipoActividad" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="TipoActividadId" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="TipoActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Actividades_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="Encargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Ahorros_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Ahorros" Type="Self.Ahorro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Ahorros">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Barrio_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CiudadId" />
+            </Principal>
+            <Dependent Role="Barrio">
+              <PropertyRef Name="CiudadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Barrio">
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrio">
+              <PropertyRef Name="BarrioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="BarrioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="DepartamentoId" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="DepartamentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pai" Multiplicity="1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="PaisId" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="PaisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Multas_TipoMulta">
+          <End Role="TipoMulta" Type="Self.TipoMulta" Multiplicity="1" />
+          <End Role="Multas" Type="Self.Multa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMulta">
+              <PropertyRef Name="TipoMultaId" />
+            </Principal>
+            <Dependent Role="Multas">
+              <PropertyRef Name="TipoMultaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Multas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Multas" Type="Self.Multa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Multas">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Prestamos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Prestamos" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Telefono_TipoTel">
+          <End Role="TipoTel" Type="Self.TipoTel" Multiplicity="1" />
+          <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTel">
+              <PropertyRef Name="TipoTelId" />
+            </Principal>
+            <Dependent Role="Telefono">
+              <PropertyRef Name="TipoTelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Telefono_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Telefono">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Actividad_Usuarios">
+          <End Role="Actividades" Type="Self.Actividade" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DBNatilleraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abonos" EntityType="Self.Abono" />
+          <EntitySet Name="Actividades" EntityType="Self.Actividade" />
+          <EntitySet Name="Ahorros" EntityType="Self.Ahorro" />
+          <EntitySet Name="Barrios" EntityType="Self.Barrio" />
+          <EntitySet Name="Ciudads" EntityType="Self.Ciudad" />
+          <EntitySet Name="Departamentoes" EntityType="Self.Departamento" />
+          <EntitySet Name="Multas" EntityType="Self.Multa" />
+          <EntitySet Name="Pais" EntityType="Self.Pai" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamo" />
+          <EntitySet Name="Telefonoes" EntityType="Self.Telefono" />
+          <EntitySet Name="TipoActividads" EntityType="Self.TipoActividad" />
+          <EntitySet Name="TipoDocumentoes" EntityType="Self.TipoDocumento" />
+          <EntitySet Name="TipoMultas" EntityType="Self.TipoMulta" />
+          <EntitySet Name="TipoTels" EntityType="Self.TipoTel" />
+          <EntitySet Name="TipoUsuarios" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="Fk_Abonos_Prestamos" Association="Self.Fk_Abonos_Prestamos">
+            <End Role="Prestamos" EntitySet="Prestamos" />
+            <End Role="Abonos" EntitySet="Abonos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Abonos_Usuarios" Association="Self.Fk_Abonos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Abonos" EntitySet="Abonos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividades_TipoActividad" Association="Self.Fk_Actividades_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividads" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Actividades_Usuarios" Association="Self.Fk_Actividades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Ahorros_Usuarios" Association="Self.Fk_Ahorros_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Ahorros" EntitySet="Ahorros" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Barrio_Ciudad" Association="Self.Fk_Barrio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudads" />
+            <End Role="Barrio" EntitySet="Barrios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Barrio" Association="Self.Fk_Usuarios_Barrio">
+            <End Role="Barrio" EntitySet="Barrios" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Ciudad_Departamento" Association="Self.Fk_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="Ciudad" EntitySet="Ciudads" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Departamento_Pais" Association="Self.Fk_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamentoes" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Multas_TipoMulta" Association="Self.Fk_Multas_TipoMulta">
+            <End Role="TipoMulta" EntitySet="TipoMultas" />
+            <End Role="Multas" EntitySet="Multas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Multas_Usuarios" Association="Self.Fk_Multas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Multas" EntitySet="Multas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Prestamos_Usuarios" Association="Self.Fk_Prestamos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Telefono_TipoTel" Association="Self.Fk_Telefono_TipoTel">
+            <End Role="TipoTel" EntitySet="TipoTels" />
+            <End Role="Telefono" EntitySet="Telefonoes" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Telefono_Usuarios" Association="Self.Fk_Telefono_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Telefono" EntitySet="Telefonoes" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_TipoDocumento" Association="Self.Fk_Usuarios_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumentoes" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_TipoUsuario" Association="Self.Fk_Usuarios_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuarios" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Actividad_Usuarios" Association="Self.Actividad_Usuarios">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBNatilleraModelStoreContainer" CdmEntityContainer="DBNatilleraEntities">
+          <EntitySetMapping Name="Abonos">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Abono">
+              <MappingFragment StoreEntitySet="Abonos">
+                <ScalarProperty Name="AbonoId" ColumnName="AbonoId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="PrestamoId" ColumnName="PrestamoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Actividade">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Ganancia" ColumnName="Ganancia" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="TipoActividadId" ColumnName="TipoActividadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ahorros">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Ahorro">
+              <MappingFragment StoreEntitySet="Ahorros">
+                <ScalarProperty Name="AhorroId" ColumnName="AhorroId" />
+                <ScalarProperty Name="Ahorro1" ColumnName="Ahorro" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="FechaEstimada" ColumnName="FechaEstimada" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barrios">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Barrio">
+              <MappingFragment StoreEntitySet="Barrio">
+                <ScalarProperty Name="BarrioId" ColumnName="BarrioId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudads">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentoes">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Multas">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Multa">
+              <MappingFragment StoreEntitySet="Multas">
+                <ScalarProperty Name="MultaId" ColumnName="MultaId" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="TipoMultaId" ColumnName="TipoMultaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Pai">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamos">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Prestamo">
+              <MappingFragment StoreEntitySet="Prestamos">
+                <ScalarProperty Name="PrestamoId" ColumnName="PrestamoId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Interes" ColumnName="Interes" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefonoes">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Telefono">
+              <MappingFragment StoreEntitySet="Telefono">
+                <ScalarProperty Name="TelefonoId" ColumnName="TelefonoId" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="TipoTelId" ColumnName="TipoTelId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoActividads">
+            <EntityTypeMapping TypeName="DBNatilleraModel.TipoActividad">
+              <MappingFragment StoreEntitySet="TipoActividad">
+                <ScalarProperty Name="TipoActividadId" ColumnName="TipoActividadId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumentoes">
+            <EntityTypeMapping TypeName="DBNatilleraModel.TipoDocumento">
+              <MappingFragment StoreEntitySet="TipoDocumento">
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMultas">
+            <EntityTypeMapping TypeName="DBNatilleraModel.TipoMulta">
+              <MappingFragment StoreEntitySet="TipoMulta">
+                <ScalarProperty Name="TipoMultaId" ColumnName="TipoMultaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTels">
+            <EntityTypeMapping TypeName="DBNatilleraModel.TipoTel">
+              <MappingFragment StoreEntitySet="TipoTel">
+                <ScalarProperty Name="TipoTelId" ColumnName="TipoTelId" />
+                <ScalarProperty Name="Decripcion" ColumnName="Decripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuarios">
+            <EntityTypeMapping TypeName="DBNatilleraModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="TipoUsuarioId" ColumnName="TipoUsuarioId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DBNatilleraModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="TipoUsuarioId" ColumnName="TipoUsuarioId" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="BarrioId" ColumnName="BarrioId" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Actividad_Usuarios" TypeName="DBNatilleraModel.Actividad_Usuarios" StoreEntitySet="Actividad_Usuarios">
+            <EndProperty Name="Actividades">
+              <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
