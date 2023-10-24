@@ -180,6 +180,7 @@
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\CiudadController.cs" />
     <Compile Include="Controllers\BarrioController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\CreditosController.cs" />
