@@ -30,5 +30,65 @@ namespace NatilleraWebApi.Clases
                    };
         }
 
+        public Usuario Consultar(string documento)
+        {
+            return dBNatillera.Usuarios.FirstOrDefault(u => u.Documento == documento);
+        }
+
+        public string InsertarUsuario()
+        {
+            try
+            {
+                dBNatillera.Usuarios.Add(Usuario);
+                dBNatillera.SaveChanges();
+                return "Se ingresó el socio: " + Usuario.Nombre;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public string ActualizarUsuario()
+        {
+            try
+            {
+                Usuario usuario = dBNatillera.Usuarios.FirstOrDefault(u => u.Documento == Usuario.Documento);
+                if (usuario == null)
+                {
+                    return "el usuario con documento: " + Usuario.Documento + " no se encuentra en la base de datos";
+                }
+
+                usuario.Documento = Usuario.Documento;
+                usuario.Nombre = Usuario.Nombre;
+                usuario.Apellido = Usuario.Apellido;
+                usuario.TipoUsuario = Usuario.TipoUsuario;
+                usuario.Barrio = Usuario.Barrio;
+                usuario.Activo = Usuario.Activo;
+                dBNatillera.SaveChanges();
+                return "Se actualizó el usuario";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public string EliminarUsuario()
+        {
+            try
+            {
+                Usuario usuario = Consultar(Usuario.Documento);
+                if (usuario == null)
+                {
+                    return "el usuario con documento: " + Usuario.Documento + " no se encuentra en la base de datos";
+                }
+                dBNatillera.Usuarios.Remove(usuario);
+                dBNatillera.SaveChanges();
+                return "Se eliminó el usuario";
+            }
+            catch (Exception ex) { return ex.Message; }
+        }
+
     }
 }
