@@ -62,7 +62,8 @@ namespace NatilleraWebApi.Clases
                 usuario.Documento = Usuario.Documento;
                 usuario.Nombre = Usuario.Nombre;
                 usuario.Apellido = Usuario.Apellido;
-                usuario.TipoUsuario = Usuario.TipoUsuario;
+                usuario.TipoUsuarioId = Usuario.TipoUsuarioId;
+                usuario.TipoDocumentoId = Usuario.TipoDocumentoId;
                 usuario.Barrio = Usuario.Barrio;
                 usuario.Activo = Usuario.Activo;
                 dBNatillera.SaveChanges();

@@ -13,20 +13,30 @@ namespace NatilleraWebApi.Clases
         public Liquidacion ConsultarLiquidacion(string Documento)
         {
             Usuario usuario = dBNatillera.Usuarios.FirstOrDefault(u => u.Documento == Documento);
-            decimal ahorros = 0;
-            foreach (var ahorro in usuario.Ahorros)
+            if (usuario == null)
             {
-                ahorros += ahorro.Ahorro1;
+                return new Liquidacion();
+            }
+            decimal ahorros = 0;
+            if(usuario.Ahorros != null)
+            {
+                foreach (var ahorro in usuario.Ahorros)
+                {
+                    ahorros += ahorro.Ahorro1;
+                }
             }
             decimal deuda = 0;
-            foreach (var prestamo in usuario.Prestamos)
+            if(usuario.Prestamos != null)
             {
-                decimal abonos = 0;
-                foreach (var abono in prestamo.Abonos)
+                foreach (var prestamo in usuario.Prestamos)
                 {
-                    abonos += abono.Monto;
+                    decimal abonos = 0;
+                    foreach (var abono in prestamo.Abonos)
+                    {
+                        abonos += abono.Monto;
+                    }
+                    deuda += prestamo.Monto + prestamo.Monto * prestamo.Interes / 100 - abonos;                
                 }
-                deuda += prestamo.Monto + prestamo.Monto * prestamo.Interes / 100 - abonos;                
             }
             Liquidacion liquidacion = new Liquidacion();
             liquidacion.Nombre = usuario.Nombre;
