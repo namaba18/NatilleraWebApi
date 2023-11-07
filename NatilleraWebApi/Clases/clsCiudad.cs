@@ -1,8 +1,6 @@
 ﻿using NatilleraWebApi.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace NatilleraWebApi.Clases
 {
@@ -10,9 +8,9 @@ namespace NatilleraWebApi.Clases
     {
         public Ciudad Ciudad { get; set; }
         private DBNatilleraEntities dBNatillera = new DBNatilleraEntities();
-        public List<Ciudad> ConsultarTodos()
+        public List<Ciudad> ConsultarTodos(int departamento)
         {
-            return dBNatillera.Ciudads.ToList();
+            return dBNatillera.Ciudads.Where(c => c.DepartamentoId == departamento).ToList();
         }
     }
 }

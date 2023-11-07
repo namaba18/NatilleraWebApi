@@ -8,9 +8,9 @@ namespace NatilleraWebApi.Clases
     {
         public Departamento Departamento { get; set; }
         private DBNatilleraEntities dBNatillera = new DBNatilleraEntities();
-        public List<Departamento> ConsultarTodos()
+        public List<Departamento> ConsultarTodos(int pais)
         {
-            return dBNatillera.Departamentoes.ToList();
+            return dBNatillera.Departamentoes.Where(d => d.PaisId == pais).ToList();
         }
     }
 }

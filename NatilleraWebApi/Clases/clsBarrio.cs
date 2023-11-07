@@ -8,9 +8,9 @@ namespace NatilleraWebApi.Clases
     {
         public Barrio Barrio { get; set; }
         private DBNatilleraEntities dBNatillera = new DBNatilleraEntities();
-        public List<Barrio> ConsultarTodos()
+        public List<Barrio> ConsultarTodos(int ciudad)
         {
-            return dBNatillera.Barrios.ToList();
+            return dBNatillera.Barrios.Where(b => b.CiudadId == ciudad).ToList();
         }
     }
 }

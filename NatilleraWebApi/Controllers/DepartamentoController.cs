@@ -9,10 +9,10 @@ namespace NatilleraWebApi.Controllers
     [EnableCors(origins: "https://localhost:44315", headers: "*", methods: "*")]
     public class DepartamentoController : ApiController
     {
-        public List<Departamento> Get()
+        public List<Departamento> Get(int pais)
         {
             clsDepartamento _Departamento = new clsDepartamento();
-            return _Departamento.ConsultarTodos();
+            return _Departamento.ConsultarTodos(pais);
         }
     }
 }

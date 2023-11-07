@@ -9,10 +9,10 @@ namespace NatilleraWebApi.Controllers
     [EnableCors(origins: "https://localhost:44315", headers: "*", methods: "*")]
     public class BarrioController : ApiController
     {
-        public List<Barrio> Get()
+        public List<Barrio> Get(int ciudad)
         {
             clsBarrio _Barrio = new clsBarrio();
-            return _Barrio.ConsultarTodos();
+            return _Barrio.ConsultarTodos(ciudad);
         }
     }
 }

@@ -15,11 +15,9 @@ namespace NatilleraWebApi.Clases
                    on C.UsuarioId equals U.UsuarioId
                    select new
                    {
-                       Id = U.UsuarioId,
-                       Nombre = U.Nombre,
-                       Apellido = U.Apellido,
-                       Monto = C.Monto,
                        Fecha = C.Fecha,
+                       Usuario = U.Nombre + " " + U.Apellido,
+                       Monto = C.Monto,                       
                        Cuotas = C.Cuotas,
                        Interes = C.Interes                       
                    };
