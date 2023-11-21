@@ -1,5 +1,6 @@
 ﻿using NatilleraWebApi.Clases;
 using NatilleraWebApi.Models;
+using System;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -14,10 +15,10 @@ namespace NatilleraWebApi.Controllers
             clsAbonos _abonos = new clsAbonos();
             return _abonos.ListarAbonos();
         }
-        public Abono Get(string Id)
+        public IQueryable Get(string PrestamoId)
         {
             clsAbonos _abonos = new clsAbonos();
-            return _abonos.Consultar(Id);
+            return _abonos.ListarAbonos(Convert.ToInt32(PrestamoId));
         }
         public string Post([FromBody] Abono abono)
         {

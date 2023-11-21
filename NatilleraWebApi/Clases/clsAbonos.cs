@@ -1,6 +1,5 @@
 ﻿using NatilleraWebApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace NatilleraWebApi.Clases
@@ -14,13 +13,30 @@ namespace NatilleraWebApi.Clases
             return from A in dBNatillera.Set<Abono>()
                    join U in dBNatillera.Set<Usuario>()
                    on A.UsuarioId equals U.UsuarioId
+                   join P in dBNatillera.Set<Prestamo>()
+                   on A.PrestamoId equals P.PrestamoId
                    select new
                    {
-                       Id = U.UsuarioId,
-                       Nombre = U.Nombre,
-                       Apellido = U.Apellido,
-                       Monto = A.Monto,
-                       Fecha = A.Fecha                       
+                       Fecha = A.Fecha,
+                       Usuario = U.Nombre + " " + U.Apellido,
+                       Abono = A.Monto,
+                       Prestamo = P.Fecha + "-" + P.Monto,
+                   };
+        }
+        public IQueryable ListarAbonos(int prestamoId)
+        {
+            return from A in dBNatillera.Set<Abono>()
+                   join U in dBNatillera.Set<Usuario>()
+                   on A.UsuarioId equals U.UsuarioId
+                   join P in dBNatillera.Set<Prestamo>()
+                   on A.PrestamoId equals P.PrestamoId
+                   where P.PrestamoId == prestamoId
+                   select new
+                   {
+                       Fecha = A.Fecha,
+                       Usuario = U.Nombre + " " + U.Apellido,
+                       Abono = A.Monto,
+                       Prestamo = P.Fecha + "-" + P.Monto,
                    };
         }
         public string Insertar()

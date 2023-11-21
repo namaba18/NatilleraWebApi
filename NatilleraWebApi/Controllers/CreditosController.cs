@@ -1,5 +1,6 @@
 ﻿using NatilleraWebApi.Clases;
 using NatilleraWebApi.Models;
+using System;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -11,8 +12,13 @@ namespace NatilleraWebApi.Controllers
     {
         public IQueryable Get()
         {
-            clsCreditos _Creditos = new clsCreditos();
-            return _Creditos.ListarCreditos();
+            clsCreditos _prestamo = new clsCreditos();
+            return _prestamo.ListarCreditos();
+        }
+        public IQueryable Get(string usuarioId)
+        {
+            clsCreditos _prestamo = new clsCreditos();
+            return _prestamo.ListarCreditos(Convert.ToInt32(usuarioId));
         }
 
         public string Post([FromBody] Prestamo prestamo)

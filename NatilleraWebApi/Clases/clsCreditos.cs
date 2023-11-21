@@ -22,6 +22,22 @@ namespace NatilleraWebApi.Clases
                        Interes = C.Interes                       
                    };
         }
+        public IQueryable ListarCreditos(int usuarioId)
+        {
+            return from C in dBNatillera.Set<Prestamo>()
+                   join U in dBNatillera.Set<Usuario>()
+                   on C.UsuarioId equals U.UsuarioId
+                   where U.UsuarioId == usuarioId
+                   select new
+                   {
+                       Id = C.PrestamoId,
+                       Fecha = C.Fecha,
+                       Usuario = U.Nombre + " " + U.Apellido,
+                       Monto = C.Monto,
+                       Cuotas = C.Cuotas,
+                       Interes = C.Interes
+                   };
+        }
         public Prestamo ConsultarPrestamo(int id)
         {
             return dBNatillera.Prestamos.FirstOrDefault(p => p.PrestamoId == id);
