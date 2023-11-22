@@ -176,8 +176,10 @@
     <Compile Include="Clases\clsCreditos.cs" />
     <Compile Include="Clases\clsDepartamento.cs" />
     <Compile Include="Clases\clsLiquidacion.cs" />
+    <Compile Include="Clases\clsTelefono.cs" />
     <Compile Include="Clases\clsTipoActividad.cs" />
     <Compile Include="Clases\clsTipoDocumento.cs" />
+    <Compile Include="Clases\clsTipoTel.cs" />
     <Compile Include="Clases\clsTipoUsuario.cs" />
     <Compile Include="Clases\clsUsuario.cs" />
     <Compile Include="Clases\clsPais.cs" />
@@ -188,11 +190,13 @@
     <Compile Include="Controllers\CiudadController.cs" />
     <Compile Include="Controllers\BarrioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TelefonosController.cs" />
     <Compile Include="Controllers\TipoActividadController.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\CreditosController.cs" />
     <Compile Include="Controllers\LiquidacionController.cs" />
+    <Compile Include="Controllers\TipoTelController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\TipoUsuarioController.cs" />
     <Compile Include="Global.asax.cs">

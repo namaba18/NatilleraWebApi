@@ -26,7 +26,8 @@ namespace NatilleraWebApi.Clases
                         TipoDocumento = TD.Descripcion,
                         Documento = U.Documento,
                         TipoUsuario = TU.Descripcion,
-                        Activo = U.Activo
+                        Activo = U.Activo,
+                        Telefonos = "<a href=''><i class='fas fa-pencil-alt text-info'></i></a>"
                    };
         }
 
